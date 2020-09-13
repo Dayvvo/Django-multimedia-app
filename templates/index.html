@@ -1,0 +1,66 @@
+{% extends 'base_template.html' %}
+
+    {% block content  %}
+    <div id="articles">
+            <div id="articleset">   
+
+                 {% for article in articles %}
+                        <div id="articlewrap">
+                                <div class="singlearticle">
+                                    <a href="#">
+                                        <p id="genre"><i> {{article.genre}} </i></p>
+                                        <h3>{{ article.title }}</h3>
+                                        <div id="imgcontainer">
+                                        {% if article.images %}
+                                        <img src="{{article.images.url}}" alt=""/>                                        
+                                        {% else %}
+                                            <img src="/static/images/JF1.jpg" alt="">
+                                        {% endif %}
+                                        </div>
+                                        <div id="articlebod">
+                                            <div>
+                                                <p id="published"><span id="authname" style= "color: #393c3d;"> {{article.auth}} ({{article.date}}) <span> </p>
+                                            </div>
+                                            <div>
+                                                <span>
+                                                    {{article.snippet}}
+                                                </span>
+                                            </div>
+                                          
+                                        </div>
+                                    </a>
+                                </div>
+                                
+                        </div>
+
+                {% endfor %}
+            </div>
+            <div id="sidebar">           
+                {% comment %} <div class="ss">
+                    <div class="genheader">
+                            <div> <div></div> </div> 
+                            <h3>TRENDING-NEWS</h3>
+                            <div> <div> </div> </div>
+                    </div>
+                    <div class="sidecontent">
+                        <div id="sideinner">
+                            <div class="inside-article">
+                                {% for i in trending  %}
+                                    <div class="color">
+                                        <a href=" {% url 'detail' slug=i.slug %} " class="article">  <div> {{i.title}} </div> </a>
+                                    </div>
+
+                                {% endfor %}
+                            </div>
+                            
+
+                        </div>
+                    </div>      
+                </div> {% endcomment %}
+            </div>
+    </div>
+    
+    {% endblock  %}
+
+
+
