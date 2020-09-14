@@ -37,9 +37,9 @@ article_patterns = [
 
 urlpatterns = [
     url(r'^index/(?P<slug>[\w-]+)/$', about_views.index2, name='index2'),
-    path('index/', about_views.index, name='index'),
-    path(r'admin/', admin.site.urls),
     url(r'^articles/', include(article_patterns)),
+    path(r'admin/', admin.site.urls),
+    path('', about_views.index, name='index'),
 
 
 ]
